@@ -3,12 +3,24 @@ import express from 'express'
 const server = express()
 
 // routing
+server.get('/', (req, res) => {
+    res.json('From GET')
+})
+
 server.post('/', (req, res) => {
-    const data = [
-        {id: 1, name: 'Leo'},
-        {id: 2, name: 'Jhon'},
-    ]
-    res.json(data)
+    res.json('From POST')
+})
+
+server.put('/', (req, res) => {
+    res.json('From PUT')
+})
+
+server.patch('/', (req, res) => {
+    res.json('From PATCH')
+})
+
+server.delete('/', (req, res) => {
+    res.json('From DELETE')
 })
 
 export default server
