@@ -1,17 +1,18 @@
 import express from 'express'
 import router from './router'
 import db from './config/db'
+import colors from 'colors'
 
 // Connecting to database
 async function connectDB() {
     try {
         await db.authenticate()
         db.sync()
-        console.log('The connection to the database was success!')
+        console.log(colors.magenta.bold('The connection to the database was success!'))
         
     } catch (error) {
-        console.log(error)
-        console.log("There was an error in the database connection!")
+        // console.log(error)
+        console.log(colors.red.bold.bold("There was an error in the database connection!"))
     }
 }
 
