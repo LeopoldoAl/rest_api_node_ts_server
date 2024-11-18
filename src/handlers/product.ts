@@ -53,7 +53,9 @@ export const updateProduct = async (req:Request, res:Response) => {
             }
 
             // Updating
-            await product.update(req.body)
+            product.name = req.body.name
+            product.price = req.body.price
+            product.availability = req.body.availability
             await product.save()
             
 
