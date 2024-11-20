@@ -1,8 +1,11 @@
-describe('Our first test', () => {
-    it('It must review what 1 + 1 is 2', () => {
-        expect(1+1).toBe(2)
-    })
-    it('It must review what 1 + 1 is not equal 2', () => {
-        expect(1+1).not.toBe(3)
+import Request from "supertest"
+import server from "../server"
+
+describe('Get /api', () => {
+    it('It should send back a json response', async () => {
+        const res = await Request(server).get('/api')
+        expect(res.status).toBe(200)
+        expect(res.headers['content-type']).toMatch((/json/))
+        expect(res.body.msg).toBe('From API')
     })
 })
