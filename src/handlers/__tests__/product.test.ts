@@ -2,6 +2,12 @@ import Request from "supertest"
 import server from "../../server"
 
 describe('POST /api/products', () => {
+    it('It should dislay errors validation', async () => {
+        const response = await Request(server).post('/api/products').send({})
+        expect(response.status).toBe(400)
+        expect(response.body).toHaveProperty('errors')
+    }, 60000)
+
     it('It should create a new product', async () => {
         const response = await Request(server).post('/api/products').send({
             name: "Mouse - Testing",
