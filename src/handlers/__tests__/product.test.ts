@@ -7,6 +7,9 @@ describe('POST /api/products', () => {
         expect(response.status).toBe(400)
         expect(response.body).toHaveProperty('errors')
         expect(response.body.errors).toHaveLength(4)
+
+        expect(response.status).not.toBe(404)
+        expect(response.body.errors).not.toHaveLength(2)
     }, 60000)
 
     it('It should create a new product', async () => {
