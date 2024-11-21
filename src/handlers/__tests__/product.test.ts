@@ -6,6 +6,7 @@ describe('POST /api/products', () => {
         const response = await Request(server).post('/api/products').send({})
         expect(response.status).toBe(400)
         expect(response.body).toHaveProperty('errors')
+        expect(response.body.errors).toHaveLength(4)
     }, 60000)
 
     it('It should create a new product', async () => {
