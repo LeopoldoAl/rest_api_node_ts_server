@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "nodemon --exec ts-node src/index.ts",
     "test": "jest --detectOpenHandles",
-    "pretest": "ts-node ./src/data --clear"
+    "pretest": "ts-node ./src/data --clear",
+    "posttest": ""
   },
   "author": "Leopoldo Alvarado G",
   "license": "ISC",
