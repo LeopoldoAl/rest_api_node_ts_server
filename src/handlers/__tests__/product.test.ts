@@ -69,3 +69,24 @@ describe('GET /api/products', () => {
         expect(response.body.data).toHaveLength(1)
     }, 60000)
 })
+
+describe('GET /api/products/:id', () => {
+    it('It should return a 404 response for a non-existent product', async () => {
+        const productId = 2000
+        const response = await Request(server).get(`/api/products/${productId}`)
+        expect(response.status).toBe(404)
+        expect(response.body).toHaveProperty('error')
+        expect(response.body.error).toBe("Product is not found!")
+
+    },60000)
+
+    it('It should check a valid ID in the URL', async () => {
+        const response = await Request(server).get('/api/products/not-valid-url')
+        expect(response.status).toBe(400)
+        expect(response.body).toHaveProperty('errors')
+        expect(response.body.errors).toHaveLength(1)
+        expect(response.body.errors[0].msg).toBe("ID isn't valid!")
+
+    },60000)
+
+})
