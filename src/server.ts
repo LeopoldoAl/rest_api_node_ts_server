@@ -12,7 +12,7 @@ async function connectDB() {
         
     } catch (error) {
         // console.log(error)
-        console.log(colors.red.bold.bold("There was an error in the database connection!"))
+        //console.log(colors.red.bold.bold("There was an error in the database connection!"))
     }
 }
 

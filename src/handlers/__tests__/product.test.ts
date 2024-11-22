@@ -54,6 +54,11 @@ describe('POST /api/products', () => {
 })
 
 describe('GET /api/products', () => {
+    it('It should chack if api/products url exists', async () => {
+        const response = await Request(server).get('/api/products')
+        expect(response.status).not.toBe(404)
+    }, 60000)
+
     test('It gets a JSON response with products', async () => {
         const response = await Request(server).get('/api/products')
         expect(response.status).toBe(200)
@@ -62,6 +67,5 @@ describe('GET /api/products', () => {
         expect(response.body.data).toHaveLength(1)
         
         expect(response.body.data).toHaveLength(1)
-        expect(response.status).not.toBe(404)
-    }, 600000)
+    }, 60000)
 })
