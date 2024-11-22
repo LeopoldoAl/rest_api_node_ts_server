@@ -89,4 +89,11 @@ describe('GET /api/products/:id', () => {
 
     },60000)
 
+    it('It gets a JSON response for a  single product', async () => {
+        const response = await Request(server).get('/api/products/1')
+        expect(response.status).toBe(200)
+        expect(response.body).toHaveProperty('data')
+
+    },60000)
+
 })
