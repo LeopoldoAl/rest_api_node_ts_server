@@ -52,3 +52,16 @@ describe('POST /api/products', () => {
         expect(response.body).not.toHaveProperty('errors')
     }, 120000)
 })
+
+describe('GET /api/products', () => {
+    test('It gets a JSON response with products', async () => {
+        const response = await Request(server).get('/api/products')
+        expect(response.status).toBe(200)
+        expect(response.headers['content-type']).toMatch(/json/)
+        expect(response.body).toHaveProperty('data')
+        expect(response.body.data).toHaveLength(1)
+        
+        expect(response.body.data).toHaveLength(1)
+        expect(response.status).not.toBe(404)
+    }, 600000)
+})
