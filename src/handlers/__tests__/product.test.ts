@@ -97,3 +97,16 @@ describe('GET /api/products/:id', () => {
     },60000)
 
 })
+
+describe('PUT /api/products/:id', () => {
+    it('It should display validation error messages when updating a product', async () => {
+        const response = await Request(server).put('/api/products/1').send({})
+        expect(response.status).toBe(400)
+        expect(response.body).toHaveProperty('errors')
+        expect(response.body.errors).toBeTruthy()
+        expect(response.body.errors).toHaveLength(5)
+
+        expect(response.status).not.toBe(200)
+        expect(response.body).not.toHaveProperty('data')
+    }, 60000)
+})

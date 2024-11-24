@@ -47,9 +47,10 @@ export const updateProduct = async (req:Request, res:Response) => {
             const {id} = req.params
             const product = await Product.findByPk(id)
             if (!product) {
-                res.status(400).json({
+                res.status(404).json({
                     error: 'Product is not found!'
                 })
+                return
             }
 
             // Updating
