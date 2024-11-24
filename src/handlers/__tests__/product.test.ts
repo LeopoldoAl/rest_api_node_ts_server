@@ -162,5 +162,22 @@ describe('PUT /api/products/:id', () => {
         expect(response.body).not.toHaveProperty('data')
     }, 60000)
     
+    it('It should update an existent product with valid data', async () => {
+        const response = await Request(server)
+                                .put(`/api/products/1`)
+                                .send({
+                                    name: "Curve Monitor",
+                                    availability: true,
+                                    price: 300
+                                })
+
+        expect(response.status).toBe(200)
+        expect(response.body).toHaveProperty("data")
+        
+
+        expect(response.status).not.toBe(400)
+        expect(response.body).not.toHaveProperty('errors')
+    }, 60000)
+    
 
 })
