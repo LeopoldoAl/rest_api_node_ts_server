@@ -1,5 +1,6 @@
 import Request from "supertest"
 import server from "../../server"
+import { body } from "express-validator"
 
 describe('POST /api/products', () => {
     it('It should dislay errors validation', async () => {
@@ -182,6 +183,16 @@ describe('PUT /api/products/:id', () => {
 
 })
 
+describe('PATCH /api/products/:id', () => {
+    it('It should return a 404 response for a non-existent product', async () => {
+        const productId = 2000
+        const response = await Request(server).patch(`/api/products/${productId}`)
+        expect(response.status).toBe(404)
+        expect(response.body.error).toBe("Product is not found!")
+        expect(response.status).not.toBe(200)
+        expect(response.body).not.toHaveProperty("data")
+    }, 60000)
+})
 describe('DELETE /api/products/:id', () => {
     it('It should valid ID', async () => {
         const response = await Request(server).delete('/api/products/not-valid')
