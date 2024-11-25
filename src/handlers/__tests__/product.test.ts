@@ -198,4 +198,12 @@ describe('DELETE /api/products/:id', () => {
         expect(response.body.error).toBe("Product is not found!")
         expect(response.status).not.toBe(200)
     }, 60000)
+
+    it('It should delete a product', async () => {
+        const response = await Request(server).delete(`/api/products/1`)
+        expect(response.status).toBe(200)
+        expect(response.body.data).toBe("Product deleted!")
+        expect(response.status).not.toBe(404)
+        expect(response.status).not.toBe(400)
+    }, 60000)
 })
