@@ -190,4 +190,12 @@ describe('DELETE /api/products/:id', () => {
         expect(response.body.errors[0].msg).toBe("ID isn't valid!")
 
     }, 60000)
+
+    it('It should return a 404 response for a non-existent product', async () => {
+        const productId = 2000
+        const response = await Request(server).delete(`/api/products/${productId}`)
+        expect(response.status).toBe(404)
+        expect(response.body.error).toBe("Product is not found!")
+        expect(response.status).not.toBe(200)
+    }, 60000)
 })
