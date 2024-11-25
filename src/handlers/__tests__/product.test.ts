@@ -192,6 +192,16 @@ describe('PATCH /api/products/:id', () => {
         expect(response.status).not.toBe(200)
         expect(response.body).not.toHaveProperty("data")
     }, 60000)
+    it('It should update the product avalability', async () => {
+        const response = await Request(server).patch(`/api/products/1`)
+        expect(response.status).toBe(200)
+        expect(response.body).toHaveProperty("data")
+        expect(response.body.data.availability).toBe(false)
+
+        expect(response.status).not.toBe(404)
+        expect(response.status).not.toBe(400)
+        expect(response.body).not.toHaveProperty("error")
+    }, 60000)
 })
 describe('DELETE /api/products/:id', () => {
     it('It should valid ID', async () => {
