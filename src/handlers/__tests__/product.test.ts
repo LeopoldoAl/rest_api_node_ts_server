@@ -181,3 +181,13 @@ describe('PUT /api/products/:id', () => {
     
 
 })
+
+describe('DELETE /api/products/:id', () => {
+    it('It should valid ID', async () => {
+        const response = await Request(server).delete('/api/products/not-valid')
+        expect(response.status).toBe(400)
+        expect(response.body).toHaveProperty('errors')
+        expect(response.body.errors[0].msg).toBe("ID isn't valid!")
+
+    }, 60000)
+})
