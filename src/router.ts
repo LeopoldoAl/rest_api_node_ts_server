@@ -54,8 +54,11 @@ router.get('/', getProducts)
 
 /**
  * @swagger
- * /api/product/:id
- * 
+ * /api/products/{id}:
+ *  get:
+ *      summary: Get a product by ID
+ *      tags: 
+ *          - Products
  * 
  */
 router.get('/:id', 
