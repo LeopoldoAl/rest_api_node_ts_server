@@ -18,7 +18,7 @@ const router = Router()
  *                  name:
  *                      type: string
  *                      description: The Product name
- *                      example: 1Curve Monitor with 49 inches
+ *                      example: Curve Monitor with 49 inches
  *                  price:
  *                      type: number
  *                      description: The Product price
@@ -29,6 +29,23 @@ const router = Router()
  *                      example: true
 */
 
+/**
+ * @swagger
+ * /api/products:
+ *      get:
+ *          summary: Get a products list
+ *          tags:
+ *              - Products
+ *          description: Return a list of products
+ *          responses:
+ *              200:
+ *                  description: Successful response
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              $ref: '#/components/schemas/Product'
+ * 
+ */
 
 // routing
 router.get('/', getProducts)
