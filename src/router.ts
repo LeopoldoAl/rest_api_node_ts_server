@@ -51,6 +51,13 @@ const router = Router()
 
 // routing
 router.get('/', getProducts)
+
+/**
+ * @swagger
+ * /api/product/:id
+ * 
+ * 
+ */
 router.get('/:id', 
     param('id').isInt().withMessage("ID isn't valid!"),
     handleInputErrors,
