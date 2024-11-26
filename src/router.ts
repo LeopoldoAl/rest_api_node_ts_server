@@ -43,7 +43,9 @@ const router = Router()
  *                  content:
  *                      application/json:
  *                          schema:
- *                              $ref: '#/components/schemas/Product'
+ *                              type: array
+ *                              items:
+ *                                  $ref: '#/components/schemas/Product'
  * 
  */
 
