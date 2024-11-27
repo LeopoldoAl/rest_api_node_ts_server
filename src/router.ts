@@ -109,7 +109,11 @@ router.get('/:id',
  *                              example: 300
  *      responses:
  *          201:
- *              description: Product created successfully!
+ *              description: Successful Response
+ *              content:
+ *                  application/json:
+ *                      shema:
+ *                          $ref: '#/components/schemas/Product'
  *          400:
  *              description: Bad Request - Invalid input dsta
  *                 
@@ -128,6 +132,50 @@ router.post('/',
     
     createProduct)
 
+
+/**
+ * @swagger
+ *  /api/products/{id}:
+ *  put:
+ *      summary: Updating a product with user input
+ *      tags:
+ *          - Products
+ *      description: Returns the updated product
+ *      parameters:
+ *        - in: path
+ *          name: id
+ *          description: The product ID to retrieve
+ *          required: true
+ *          schema:
+ *              type: integer
+ *      requestBody: 
+ *          required: true
+ *          content:
+ *              application/json:
+ *                  schema:
+ *                      type: object
+ *                      properties:
+ *                          name:
+ *                              type: string
+ *                              example: "Curve Monitor"
+ *                          price:
+ *                              type: number
+ *                              example: 300
+ *                          availability:
+ *                              type: boolean
+ *                              example: true
+ *      responses:
+ *          200:
+ *              description: Successful Response
+ *              content:
+ *                  application/json:
+ *                      shema:
+ *                          $ref: '#/components/schemas/Product'
+ *          400:
+ *              description: Bad Request - Invalid ID or Invalid input data
+ *          404:
+ *              description: Product Not Found
+ */
 router.put('/:id', 
     param('id').isInt().withMessage("ID isn't valid!"),
     body('name').notEmpty()
