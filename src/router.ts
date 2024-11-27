@@ -86,6 +86,34 @@ router.get('/:id',
     getProductById
 )
 
+/**
+ * @swagger
+ * /api/products:
+ *  post:
+ *      summary: Creates a new product
+ *      tags:
+ *          - Products
+ *      description: Returns a new record in the database
+ *      requestBody: 
+ *          required: true
+ *          content:
+ *              application/json:
+ *                  schema:
+ *                      type: object
+ *                      properties:
+ *                          name:
+ *                              type: string
+ *                              example: "Curve Monitor"
+ *                          price:
+ *                              type: number
+ *                              example: 300
+ *      responses:
+ *          201:
+ *              description: Product created successfully!
+ *          400:
+ *              description: Bad Request - Invalid input dsta
+ *                 
+ */
 router.post('/', 
     // Validation
     body('name').notEmpty()
