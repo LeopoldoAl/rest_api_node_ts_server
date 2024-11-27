@@ -3,7 +3,8 @@ import router from './router'
 import db from './config/db'
 import colors from 'colors'
 import swaggerUI from 'swagger-ui-express'
-import swaggerSpec from './config/swagger'
+import swaggerSpec, { swaggerUIOptions } from './config/swagger'
+import path from 'path'
 
 // Connecting to database
 export async function connectDB() {
@@ -28,7 +29,13 @@ server.use(express.json())
 
 server.use('/api/products', router)
 
+// STATIC FILES
+server.use(express.static(path.join(__dirname, "../public")))
+server.use("/media", (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/media/logo.png"))
+})
+
 // Documenting
-server.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec))
+server.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec, swaggerUIOptions))
 
 export default server

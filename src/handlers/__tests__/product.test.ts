@@ -1,6 +1,5 @@
 import Request from "supertest"
 import server from "../../server"
-import { body } from "express-validator"
 
 describe('POST /api/products', () => {
     it('It should dislay errors validation', async () => {

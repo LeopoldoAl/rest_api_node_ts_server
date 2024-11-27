@@ -1,4 +1,5 @@
 import swaggerJSDoc from "swagger-jsdoc"
+import { SwaggerUiOptions } from "swagger-ui-express"
 
 const options: swaggerJSDoc.Options = {
     swaggerDefinition: {
@@ -19,4 +20,23 @@ const options: swaggerJSDoc.Options = {
 }
 
 const swaggerSpec = swaggerJSDoc(options)
+
+const swaggerUIOptions: SwaggerUiOptions = {
+    customCss: `
+        .topbar-wrapper .link{
+            content: url('/media/logo.png');
+            height: 120px;
+            width: auto;
+        }
+        .swagger-ui .topbar{
+            background-color: black;
+        }
+    `,
+    customSiteTitle: 'REST API Express / Typescript DOCUMENTATION',
+    customfavIcon: '/media/favicon.png'
+}
 export default swaggerSpec
+
+export {
+    swaggerUIOptions
+}
