@@ -1,6 +1,6 @@
 # REST API NODE TS SERVER
 ## Description
-### In this project, we worked with depenncies such as:
+### In this project, we worked with dependencies such as:
 * Node.js
 * TypeScript
 * express
