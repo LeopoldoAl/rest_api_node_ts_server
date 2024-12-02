@@ -6,6 +6,7 @@ import swaggerUI from 'swagger-ui-express'
 import swaggerSpec, { swaggerUIOptions } from './config/swagger'
 import path from 'path'
 import cors, { CorsOptions } from 'cors'
+import morgan from 'morgan'
 
 // Connecting to database
 export async function connectDB() {
@@ -41,6 +42,8 @@ server.use(cors(corsOptions))
 
 // Reading data from the FORM
 server.use(express.json())
+
+server.use(morgan('dev'))
 
 server.use('/api/products', router)
 
