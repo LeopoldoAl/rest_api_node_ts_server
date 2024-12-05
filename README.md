@@ -9,6 +9,9 @@
 * sequelize-typescript
 * swagger-jsdoc
 * swagger-ui-express
+* cors
+* colors
+* morgan
 ### Also we worked with development depenncies such as:
 - @types/express
 - @types/jest
@@ -21,6 +24,8 @@
 - ts-jest
 - ts-node
 - typescript
+- @types/cors
+- @types/morgan
 ## How about it goes this project:
 This project has the purpose to create a REST API, which works appropriately when data are coming into Postgre database, executing operations such as: 
 - Insert
