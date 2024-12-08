@@ -40,6 +40,7 @@ This project has the purpose to create a REST API, which works appropriately whe
 ![Updating json data](../media/updatepatch.png?raw=true)
 - Delete
 ![Deleting json data](../media/delete.png?raw=true)
+
 This is can be acceded from another API with the objective of reading, writing, updating and deleting data to the database. Among the methods that have been used for working with the database are:
 * Get
 * Post
